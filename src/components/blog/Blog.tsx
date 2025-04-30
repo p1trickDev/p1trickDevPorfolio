@@ -1,6 +1,6 @@
 import { useState, lazy, Suspense } from "react";
 // import { cn } from "@/lib/utils";
-import { ReactNode } from "react";
+// import { ReactNode } from "react";
 
 // Import ScrollLinked component using lazy loading
 const ScrollLinked = lazy(() => import("./ScrollLinked"));
