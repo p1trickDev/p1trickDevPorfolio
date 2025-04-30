@@ -18,7 +18,7 @@ function App() {
       <div className="min-h-screen w-full relative flex flex-col">
         {/* Neon Cursor */}
         <NeonCursor />
-        
+
         {/* Particles background */}
         <div className="fixed inset-0 z-0">
           <Particles
@@ -31,10 +31,7 @@ function App() {
 
         {/* Navbar at the top */}
         <div className="pt-4">
-          <Navbar 
-            activeItem={currentPage} 
-            setActiveItem={handleNavigation} 
-          />
+          <Navbar activeItem={currentPage} setActiveItem={handleNavigation} />
         </div>
 
         {/* Main content - centered vertically and horizontally */}
@@ -50,9 +47,9 @@ function App() {
               <p className="text-xl md:text-2xl">Full Stack Developer</p>
             </div>
           )}
-          
+
           {currentPage === "Blog" && <Blog />}
-          
+
           {/* Add other page components here */}
         </div>
       </div>
