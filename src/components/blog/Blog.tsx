@@ -1,5 +1,7 @@
 import { useState, lazy, Suspense } from "react";
-import { cn } from "@/lib/utils";
+// import { cn } from "@/lib/utils";
+import { motion, useScroll } from "motion/react";
+import { ReactNode } from "react";
 
 // Import ScrollLinked component using lazy loading
 const ScrollLinked = lazy(() => import("./ScrollLinked"));
@@ -172,5 +174,33 @@ function BlogPost({ post, onBack }: BlogPostProps) {
         </ScrollLinked>
       </Suspense>
     </div>
+  );
+}
+
+// ScrollLinked component
+interface ScrollLinkedProps {
+  children?: ReactNode;
+}
+
+function ScrollLinked({ children }: ScrollLinkedProps) {
+  const { scrollYProgress } = useScroll();
+
+  return (
+    <>
+      <motion.div
+        id="scroll-indicator"
+        style={{
+          scaleX: scrollYProgress,
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 10,
+          originX: 0,
+          backgroundColor: "#ff0088",
+        }}
+      />
+      {children}
+    </>
   );
 }
