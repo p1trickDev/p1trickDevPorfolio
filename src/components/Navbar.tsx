@@ -11,15 +11,21 @@ import type { IconType } from "react-icons";
 type NavItem = {
   name: string;
   href: string;
-  icon: IconType; // Changed from string to IconType
+  icon: IconType;
+  isScrollTarget?: boolean; // Flag to indicate if this is a scroll target or new page
 };
 
 const navItems: NavItem[] = [
-  { name: "Home", href: "/", icon: RiHome5Line },
-  { name: "Projects", href: "/projects", icon: RiRocketLine },
-  { name: "About", href: "/about", icon: RiUser3Line },
-  { name: "Blog", href: "/blog", icon: RiFileTextLine },
-  { name: "Contact", href: "/contact", icon: RiMailLine },
+  { name: "Home", href: "home", icon: RiHome5Line, isScrollTarget: true },
+  {
+    name: "Projects",
+    href: "projects",
+    icon: RiRocketLine,
+    isScrollTarget: true,
+  },
+  { name: "About", href: "about", icon: RiUser3Line, isScrollTarget: true },
+  { name: "Blog", href: "/blog", icon: RiFileTextLine, isScrollTarget: false },
+  { name: "Contact", href: "contact", icon: RiMailLine, isScrollTarget: true },
 ];
 
 interface NavbarProps {
@@ -28,6 +34,25 @@ interface NavbarProps {
 }
 
 const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
+  // Function to handle both scrolling and page navigation
+  const handleNavigation = (item: NavItem, e: React.MouseEvent) => {
+    e.preventDefault();
+
+    if (item.isScrollTarget) {
+      // For scroll targets, scroll to the section
+      const element = document.getElementById(item.href);
+      if (element) {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }
+
+    // Update the active item in state
+    setActiveItem(item.name);
+  };
+
   return (
     <div className="relative z-20 w-full flex justify-center pb-3 pt-2">
       <div className="bg-black/20 backdrop-blur-lg rounded-full px-4 py-2 flex items-center gap-0.5 sm:gap-2 border border-white/10">
@@ -36,7 +61,7 @@ const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
             key={item.name}
             item={item}
             isActive={activeItem === item.name}
-            onClick={() => setActiveItem(item.name)}
+            onClick={(e) => handleNavigation(item, e)}
           />
         ))}
       </div>
@@ -47,7 +72,7 @@ const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
 interface NavbarItemProps {
   item: NavItem;
   isActive: boolean;
-  onClick: () => void;
+  onClick: (e: React.MouseEvent) => void;
 }
 
 const NavbarItem = ({ item, isActive, onClick }: NavbarItemProps) => {
@@ -55,11 +80,8 @@ const NavbarItem = ({ item, isActive, onClick }: NavbarItemProps) => {
 
   return (
     <a
-      href={item.href}
-      onClick={(e) => {
-        e.preventDefault(); // Prevent navigation for now
-        onClick();
-      }}
+      href={item.isScrollTarget ? `#${item.href}` : item.href}
+      onClick={onClick}
       className="group relative flex flex-col items-center px-1"
     >
       {/* Icon with bounce effect on hover */}
