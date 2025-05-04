@@ -126,7 +126,7 @@ export default function Contact() {
                 </div>
 
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/p1trickDev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
@@ -139,13 +139,13 @@ export default function Contact() {
                       GitHub
                     </h4>
                     <p className="text-white group-hover/item:text-[#646cff] transition-colors">
-                      github.com/yourusername
+                      https://github.com/p1trickDev
                     </p>
                   </div>
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
@@ -158,7 +158,7 @@ export default function Contact() {
                       LinkedIn
                     </h4>
                     <p className="text-white group-hover/item:text-[#646cff] transition-colors">
-                      linkedin.com/in/yourusername
+                      https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/
                     </p>
                   </div>
                 </a>
@@ -337,12 +337,12 @@ export default function Contact() {
             <div className="h-6 w-px bg-white/10"></div>
             <SocialIconLink
               icon={<FiGithub size={18} />}
-              href="https://github.com/yourusername"
+              href="https://github.com/p1trickDev"
               label="GitHub"
             />
             <SocialIconLink
               icon={<FiLinkedin size={18} />}
-              href="https://linkedin.com/in/yourusername"
+              href="https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/"
               label="LinkedIn"
             />
           </div>

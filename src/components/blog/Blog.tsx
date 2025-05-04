@@ -28,7 +28,7 @@ const blogPosts: BlogPost[] = [
     title: "Day Seven of OJT: Small Wins, Big Lessons",
     excerpt:
       "Our day of overcoming challenges with the notification system and learning the value of persistence in software development.",
-    date: "June 18, 2023",
+    date: "February 24, 2025",
     slug: "day-seven-ojt",
   },
   {
@@ -36,7 +36,7 @@ const blogPosts: BlogPost[] = [
     title: "Day Six of OJT: Turning Feedback Into Features",
     excerpt:
       "How we implemented document history logs and notification features based on real user feedback to create a more meaningful system.",
-    date: "June 17, 2023",
+    date: "February 22, 2025",
     slug: "day-six-ojt",
   },
   {
@@ -44,7 +44,7 @@ const blogPosts: BlogPost[] = [
     title: "Day Five of OJT: Progress Report and Real-World Insights",
     excerpt:
       "Our experience submitting our first progress report and gathering valuable user insights to improve our document tracking system.",
-    date: "June 16, 2023",
+    date: "February 21, 2025",
     slug: "day-five-ojt",
   },
   {
@@ -52,7 +52,7 @@ const blogPosts: BlogPost[] = [
     title: "Day Four of OJT: Implementing Document Tracking and User Roles",
     excerpt:
       "Our progress developing the core features of the document tracking system and implementing user role management.",
-    date: "June 15, 2023",
+    date: "February 20, 2025",
     slug: "day-four-ojt",
   },
   {
@@ -60,7 +60,7 @@ const blogPosts: BlogPost[] = [
     title: "Day Three of OJT: Planning Features and Starting Development",
     excerpt:
       "Our journey from project planning to actual development as we start building the document tracking system.",
-    date: "June 14, 2023",
+    date: "February 19, 2025",
     slug: "day-three-ojt",
   },
   {
@@ -68,7 +68,7 @@ const blogPosts: BlogPost[] = [
     title: "Day Two of OJT: Laying the Groundwork and Overcoming Git Hurdles",
     excerpt:
       "Our team's journey through Git challenges and setting up the Django development environment.",
-    date: "June 13, 2023",
+    date: "Feb 18, 2025",
     slug: "day-two-ojt",
   },
   {
@@ -76,7 +76,7 @@ const blogPosts: BlogPost[] = [
     title: "Day One: On the Job Training (OJT)",
     excerpt:
       "My experience during the first day of on-the-job training as a graduating IT student.",
-    date: "June 12, 2023",
+    date: "Feb 17, 2025",
     slug: "day-one-ojt",
   },
 ];
