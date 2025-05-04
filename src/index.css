@@ -158,3 +158,61 @@
     font-size: 0.95rem;
   }
 }
+
+/* Extra small screen utilities */
+@media (max-width: 370px) {
+  .xs\:text-xs {
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+
+  .xs\:gap-1 {
+    gap: 0.25rem;
+  }
+
+  .xs\:p-2 {
+    padding: 0.5rem;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Fix: Change the problematic selector to a standard format */
+  .xs-max-w-90vw {
+    max-width: 90vw;
+  }
+}
+
+/* Special fixes for Galaxy Fold and other ultra-narrow devices */
+@media (max-width: 320px) {
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+
+  .text-2xl {
+    font-size: 1.375rem;
+  }
+
+  .text-xl {
+    font-size: 1.125rem;
+  }
+
+  h1.text-5xl {
+    font-size: 2rem;
+  }
+
+  h2.text-2xl {
+    font-size: 1.25rem;
+  }
+
+  /* Fix: Use a valid CSS attribute selector instead of square brackets in the class name */
+  [class*="min-w-\[40px\]"] {
+    min-width: 36px !important;
+  }
+}

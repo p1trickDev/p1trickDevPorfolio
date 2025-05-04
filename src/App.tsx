@@ -116,14 +116,16 @@ function App() {
               id="home"
               className="min-h-screen flex items-center justify-center pt-16"
             >
-              <div className="text-center">
-                <h1 className="text-5xl md:text-6xl font-bold mb-4">
+              <div className="text-center px-4">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4">
                   Fitzpatrick U. Managuit
                 </h1>
-                <h2 className="text-2xl md:text-3xl font-light text-primary/80 mb-6">
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-light text-primary/80 mb-4 sm:mb-6">
                   <span className="text-[#646cff]">p1trick</span>Dev
                 </h2>
-                <p className="text-xl md:text-2xl">Full Stack Developer</p>
+                <p className="text-lg sm:text-xl md:text-2xl">
+                  Full Stack Developer
+                </p>
               </div>
             </section>
 

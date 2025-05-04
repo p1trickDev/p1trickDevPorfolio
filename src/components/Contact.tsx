@@ -62,15 +62,15 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="py-16 sm:py-20 md:py-24 px-4 relative z-10 overflow-hidden"
+      className="py-12 sm:py-16 md:py-24 px-4 relative z-10 overflow-hidden"
     >
       {/* Background gradient elements */}
-      <div className="absolute -top-24 -left-24 w-48 sm:w-64 h-48 sm:h-64 bg-[#646cff]/30 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
-      <div className="absolute -bottom-32 -right-32 w-64 sm:w-80 h-64 sm:h-80 bg-purple-600/20 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
+      <div className="absolute -top-24 -left-24 w-32 sm:w-48 h-32 sm:h-48 bg-[#646cff]/30 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
+      <div className="absolute -bottom-32 -right-32 w-48 sm:w-64 h-48 sm:h-64 bg-purple-600/20 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
 
       <div className="max-w-6xl mx-auto relative">
         <motion.h2
-          className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center"
+          className="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -79,7 +79,7 @@ export default function Contact() {
           <span className="text-[#646cff]">Contact</span> Me
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4 sm:gap-6">
           {/* Left column - Contact information */}
           <motion.div
             className="lg:col-span-2"
@@ -88,7 +88,7 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="rounded-xl sm:rounded-2xl bg-black/20 backdrop-blur-sm border border-white/10 p-5 sm:p-8 h-full relative overflow-hidden group">
+            <div className="rounded-xl bg-black/20 backdrop-blur-sm border border-white/10 p-4 sm:p-5 md:p-8 h-full relative overflow-hidden group">
               {/* Animated corner accent */}
               <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#646cff]/30 rounded-full transform group-hover:scale-150 transition-transform duration-700"></div>
 
@@ -101,36 +101,39 @@ export default function Contact() {
               </p>
 
               {/* Contact info items */}
-              <div className="space-y-4 sm:space-y-6 relative z-10">
+              <div className="space-y-3 sm:space-y-4 md:space-y-6 relative z-10">
                 <div
-                  className="flex items-center p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm group/item hover:bg-[#646cff]/10 transition-all duration-300"
+                  className="flex items-center p-2.5 sm:p-3 md:p-4 rounded-lg border border-white/5 bg-white/5 backdrop-blur-sm group/item hover:bg-[#646cff]/10 transition-all duration-300"
                   onClick={copyEmail}
                 >
-                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
-                    <FiMail size={18} className="sm:text-[20px]" />
+                  <div className="flex-shrink-0 flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-lg bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
+                    <FiMail
+                      size={14}
+                      className="sm:text-[16px] md:text-[18px]"
+                    />
                   </div>
-                  <div className="ml-3 sm:ml-4 flex-grow min-w-0">
-                    <h4 className="text-xs sm:text-sm font-medium text-gray-300">
+                  <div className="ml-2.5 sm:ml-3 md:ml-4 flex-grow min-w-0">
+                    <h4 className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-300">
                       Email
                     </h4>
-                    <p className="text-sm sm:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
+                    <p className="text-xs sm:text-sm md:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
                       ztifuuu@gmail.com
                     </p>
                   </div>
                   <button
-                    className="ml-1 sm:ml-2 p-1.5 sm:p-2 rounded-lg hover:bg-white/10 transition-colors"
+                    className="ml-1 sm:ml-2 p-1 sm:p-1.5 md:p-2 rounded-lg hover:bg-white/10 transition-colors"
                     onClick={copyEmail}
                     aria-label="Copy email"
                   >
                     {copiedEmail ? (
                       <FiCheck
-                        size={14}
-                        className="sm:text-[16px] text-green-400"
+                        size={12}
+                        className="sm:text-[14px] text-green-400"
                       />
                     ) : (
                       <FiCopy
-                        size={14}
-                        className="sm:text-[16px] text-gray-400"
+                        size={12}
+                        className="sm:text-[14px] text-gray-400"
                       />
                     )}
                   </button>
@@ -140,16 +143,19 @@ export default function Contact() {
                   href="https://github.com/p1trickDev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
+                  className="flex items-center p-2.5 sm:p-3 md:p-4 rounded-lg border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
                 >
-                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
-                    <FiGithub size={18} className="sm:text-[20px]" />
+                  <div className="flex-shrink-0 flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-lg bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
+                    <FiGithub
+                      size={14}
+                      className="sm:text-[16px] md:text-[18px]"
+                    />
                   </div>
-                  <div className="ml-3 sm:ml-4 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-medium text-gray-300">
+                  <div className="ml-2.5 sm:ml-3 md:ml-4 min-w-0">
+                    <h4 className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-300">
                       GitHub
                     </h4>
-                    <p className="text-sm sm:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
+                    <p className="text-xs sm:text-sm md:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
                       github.com/p1trickDev
                     </p>
                   </div>
@@ -159,16 +165,19 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
+                  className="flex items-center p-2.5 sm:p-3 md:p-4 rounded-lg border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
                 >
-                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
-                    <FiLinkedin size={18} className="sm:text-[20px]" />
+                  <div className="flex-shrink-0 flex items-center justify-center h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-lg bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
+                    <FiLinkedin
+                      size={14}
+                      className="sm:text-[16px] md:text-[18px]"
+                    />
                   </div>
-                  <div className="ml-3 sm:ml-4 min-w-0">
-                    <h4 className="text-xs sm:text-sm font-medium text-gray-300">
+                  <div className="ml-2.5 sm:ml-3 md:ml-4 min-w-0">
+                    <h4 className="text-[10px] sm:text-xs md:text-sm font-medium text-gray-300">
                       LinkedIn
                     </h4>
-                    <p className="text-sm sm:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
+                    <p className="text-xs sm:text-sm md:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
                       linkedin.com/in/fitzpatrick-managuit
                     </p>
                   </div>
@@ -340,24 +349,24 @@ export default function Contact() {
 
         {/* Social links - Bottom section */}
         <motion.div
-          className="mt-8 sm:mt-10 flex justify-center"
+          className="mt-6 sm:mt-8 flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <div className="flex gap-3 sm:gap-4 items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
-            <span className="text-xs sm:text-sm text-gray-400">
+          <div className="flex gap-2 sm:gap-3 md:gap-4 items-center px-3 sm:px-4 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
+            <span className="text-[10px] sm:text-xs text-gray-400">
               Follow me on:
             </span>
-            <div className="h-4 sm:h-6 w-px bg-white/10"></div>
+            <div className="h-3 sm:h-4 md:h-6 w-px bg-white/10"></div>
             <SocialIconLink
-              icon={<FiGithub size={16} className="sm:text-[18px]" />}
+              icon={<FiGithub size={14} className="sm:text-[16px]" />}
               href="https://github.com/p1trickDev"
               label="GitHub"
             />
             <SocialIconLink
-              icon={<FiLinkedin size={16} className="sm:text-[18px]" />}
+              icon={<FiLinkedin size={14} className="sm:text-[16px]" />}
               href="https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/"
               label="LinkedIn"
             />

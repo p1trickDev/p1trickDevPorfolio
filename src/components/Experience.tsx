@@ -75,10 +75,10 @@ const experiences: ExperienceItem[] = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-4 relative z-10">
+    <section id="experience" className="py-16 sm:py-24 px-4 relative z-10">
       <div className="max-w-6xl mx-auto">
         <motion.h2
-          className="text-4xl font-bold mb-16 text-center"
+          className="text-3xl sm:text-4xl font-bold mb-10 sm:mb-16 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -87,7 +87,7 @@ export default function Experience() {
           <span className="text-[#646cff]">Work</span> Experience
         </motion.h2>
 
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           {experiences.map((exp, index) => (
             <ExperienceCard key={exp.id} experience={exp} index={index} />
           ))}
@@ -127,38 +127,40 @@ function ExperienceCard({ experience, index }: ExperienceCardProps) {
         className={cn(
           "group bg-black/20 backdrop-blur-sm border border-white/10 rounded-xl overflow-hidden transition-all duration-300",
           "hover:bg-black/30 cursor-pointer",
-          isExpanded ? "p-6" : "p-5"
+          isExpanded ? "p-4 sm:p-6" : "p-3 sm:p-5"
         )}
       >
-        <div className="flex flex-col md:flex-row items-start gap-4">
+        <div className="flex flex-col md:flex-row items-start gap-3 sm:gap-4">
           {/* Timeline dot */}
-          <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-[#646cff]/20 text-[#646cff] border border-[#646cff]/30">
-            <FiBriefcase size={18} />
+          <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#646cff]/20 text-[#646cff] border border-[#646cff]/30">
+            <FiBriefcase size={16} className="sm:text-[18px]" />
           </div>
 
-          <div className="flex-grow space-y-2">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-              <h3 className="text-xl font-semibold text-white">
+          <div className="flex-grow space-y-1.5 sm:space-y-2">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 sm:gap-2">
+              <h3 className="text-lg sm:text-xl font-semibold text-white">
                 {experience.role}
               </h3>
-              <div className="flex items-center text-sm text-white/70">
-                <FiCalendar size={14} className="mr-1" />
+              <div className="flex items-center text-xs sm:text-sm text-white/70">
+                <FiCalendar size={12} className="mr-1 sm:text-[14px]" />
                 <span>{experience.period}</span>
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-sm text-white/70">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 text-xs sm:text-sm text-white/70">
               <div className="font-medium text-[#646cff]">
                 {experience.company}
               </div>
               <div className="hidden sm:block">•</div>
               <div className="flex items-center">
-                <FiMapPin size={14} className="mr-1" />
+                <FiMapPin size={12} className="mr-1 sm:text-[14px]" />
                 <span>{experience.location}</span>
               </div>
             </div>
 
-            <p className="text-white/80 pt-2">{experience.description}</p>
+            <p className="text-sm text-white/80 pt-1 sm:pt-2">
+              {experience.description}
+            </p>
 
             <motion.div
               animate={{
@@ -170,24 +172,27 @@ function ExperienceCard({ experience, index }: ExperienceCardProps) {
             >
               {isExpanded && (
                 <>
-                  <div className="pt-4 text-left">
-                    <h4 className="text-sm font-semibold text-white/90 mb-2">
+                  <div className="pt-3 sm:pt-4 text-left">
+                    <h4 className="text-xs sm:text-sm font-semibold text-white/90 mb-1.5 sm:mb-2">
                       Key Achievements:
                     </h4>
-                    <ul className="list-disc pl-5 space-y-1 text-left">
+                    <ul className="list-disc pl-4 sm:pl-5 space-y-0.5 sm:space-y-1 text-left">
                       {experience.achievements.map((achievement, i) => (
-                        <li key={i} className="text-sm text-white/70 text-left">
+                        <li
+                          key={i}
+                          className="text-xs sm:text-sm text-white/70 text-left"
+                        >
                           {achievement}
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="flex flex-wrap gap-2 mt-4">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-3 sm:mt-4">
                     {experience.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80"
+                        className="text-[9px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-white/10 text-white/80"
                       >
                         {tag}
                       </span>
@@ -204,7 +209,7 @@ function ExperienceCard({ experience, index }: ExperienceCardProps) {
             transition={{ duration: 0.3 }}
             className="flex-shrink-0 self-start mt-1 text-white/50"
           >
-            <FiChevronDown size={18} />
+            <FiChevronDown size={16} className="sm:text-[18px]" />
           </motion.div>
         </div>
       </div>

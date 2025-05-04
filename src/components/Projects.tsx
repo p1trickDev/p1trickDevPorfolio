@@ -52,13 +52,13 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24 px-4 relative z-10">
+    <section id="projects" className="py-16 sm:py-24 px-4 relative z-10">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-12 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center">
           <span className="text-[#646cff]">My</span> Projects
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -76,7 +76,7 @@ function ProjectCard({ project }: ProjectCardProps) {
   return (
     <div className="rounded-lg overflow-hidden border border-white/10 bg-black/20 backdrop-blur-sm hover:bg-black/30 transition-all duration-300 flex flex-col h-full">
       {/* Project image */}
-      <div className="h-48 bg-black/40 relative overflow-hidden">
+      <div className="h-36 sm:h-48 bg-black/40 relative overflow-hidden">
         {project.imageUrl ? (
           <div
             className="absolute inset-0 bg-cover bg-center opacity-80 hover:opacity-100 transition-opacity duration-300"
@@ -92,19 +92,21 @@ function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       {/* Project details */}
-      <div className="p-6 flex-grow flex flex-col">
-        <h3 className="text-xl font-semibold mb-3 text-[#646cff]">
+      <div className="p-4 sm:p-6 flex-grow flex flex-col">
+        <h3 className="text-lg sm:text-xl font-semibold mb-2 sm:mb-3 text-[#646cff]">
           {project.title}
         </h3>
-        <p className="text-sm text-gray-300 mb-4">{project.description}</p>
+        <p className="text-xs sm:text-sm text-gray-300 mb-3 sm:mb-4">
+          {project.description}
+        </p>
 
         {/* Technologies */}
         <div className="mt-auto">
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4">
             {project.technologies.map((tech, index) => (
               <span
                 key={index}
-                className="text-xs px-2 py-1 rounded-full bg-white/10 text-white/80"
+                className="text-[9px] sm:text-xs px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full bg-white/10 text-white/80"
               >
                 {tech}
               </span>
@@ -112,18 +114,18 @@ function ProjectCard({ project }: ProjectCardProps) {
           </div>
 
           {/* Buttons */}
-          <div className="flex gap-3">
+          <div className="flex gap-2 sm:gap-3">
             <a
               href={project.sourceUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "flex items-center gap-1.5 text-xs font-medium py-1.5 px-3",
+                "flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-medium py-1 sm:py-1.5 px-2 sm:px-3",
                 "rounded-full border border-white/20 hover:bg-white/10",
                 "transition-colors duration-300"
               )}
             >
-              <FiGithub size={12} />
+              <FiGithub size={10} className="sm:text-[12px]" />
               Source Code
             </a>
             <a
@@ -131,12 +133,12 @@ function ProjectCard({ project }: ProjectCardProps) {
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
-                "flex items-center gap-1.5 text-xs font-medium py-1.5 px-3",
+                "flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-medium py-1 sm:py-1.5 px-2 sm:px-3",
                 "rounded-full bg-[#646cff]/80 hover:bg-[#646cff] text-white",
                 "transition-colors duration-300"
               )}
             >
-              <FiExternalLink size={12} />
+              <FiExternalLink size={10} className="sm:text-[12px]" />
               Live Demo
             </a>
           </div>

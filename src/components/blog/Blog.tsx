@@ -126,20 +126,22 @@ export default function Blog({
   // Otherwise, show the blog listing
   return (
     <div className="max-w-4xl mx-auto">
-      <div className="grid gap-8">
+      <div className="grid gap-4 sm:gap-8">
         {blogPosts.map((post) => (
           <div
             key={post.id}
-            className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-6 cursor-pointer hover:bg-black/30 transition-all"
+            className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-4 sm:p-6 cursor-pointer hover:bg-black/30 transition-all"
             onClick={() => handlePostSelect(post)}
           >
-            <h2 className="text-2xl font-semibold mb-2 text-[#646cff]">
+            <h2 className="text-xl sm:text-2xl font-semibold mb-1.5 sm:mb-2 text-[#646cff]">
               {post.title}
             </h2>
-            <div className="text-sm text-gray-400 mb-3">{post.date}</div>
-            <p className="text-gray-300">{post.excerpt}</p>
+            <div className="text-xs sm:text-sm text-gray-400 mb-2 sm:mb-3">
+              {post.date}
+            </div>
+            <p className="text-sm sm:text-base text-gray-300">{post.excerpt}</p>
             <button
-              className="mt-4 text-sm font-medium text-[#646cff] hover:text-[#535bf2]"
+              className="mt-3 sm:mt-4 text-xs sm:text-sm font-medium text-[#646cff] hover:text-[#535bf2]"
               onClick={(e) => {
                 e.stopPropagation();
                 handlePostSelect(post);
@@ -165,7 +167,7 @@ function BlogPost({ post, onBack }: BlogPostProps) {
   const backButton = (
     <button
       onClick={onBack}
-      className="fixed top-16 left-4 z-20 flex items-center px-3 py-2 text-sm font-medium text-[#646cff] hover:text-[#535bf2] bg-black/50 rounded-lg backdrop-blur-sm"
+      className="fixed top-4 sm:top-16 left-4 z-20 flex items-center px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-sm font-medium text-[#646cff] hover:text-[#535bf2] bg-black/50 rounded-lg backdrop-blur-sm"
     >
       ← Back to blog
     </button>
