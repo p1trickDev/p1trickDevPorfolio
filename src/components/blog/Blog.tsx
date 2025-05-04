@@ -1,9 +1,4 @@
-import { useState } from "react";
-// import { cn } from "@/lib/utils";
-// import { ReactNode } from "react";
-
-// Import ScrollLinked component using lazy loading
-// const ScrollLinked = lazy(() => import("./ScrollLinked"));
+import { useState, useEffect } from "react";
 import DayOne from "./DayOne";
 import DayTwo from "./DayTwo";
 import DayThree from "./DayThree";
@@ -13,7 +8,7 @@ import DaySix from "./DaySix";
 import DaySeven from "./DaySeven";
 
 // Define blog post type
-type BlogPost = {
+export type BlogPost = {
   id: string;
   title: string;
   excerpt: string;
@@ -81,26 +76,62 @@ const blogPosts: BlogPost[] = [
   },
 ];
 
-export default function Blog() {
-  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+interface BlogProps {
+  initialSelectedPost?: BlogPost | null;
+  onBack?: () => void;
+  onPostSelect?: (post: BlogPost) => void;
+}
+
+export default function Blog({
+  initialSelectedPost = null,
+  onBack,
+  onPostSelect,
+}: BlogProps) {
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(
+    initialSelectedPost
+  );
+
+  // Use initialSelectedPost if provided (for direct linking)
+  useEffect(() => {
+    if (initialSelectedPost) {
+      setSelectedPost(initialSelectedPost);
+    }
+  }, [initialSelectedPost]);
+
+  const handlePostSelect = (post: BlogPost) => {
+    if (onPostSelect) {
+      // If we have a parent handler, let the parent component handle showing the post
+      onPostSelect(post);
+    } else {
+      // Otherwise, handle it locally
+      setSelectedPost(post);
+    }
+  };
+
+  const handleBack = () => {
+    if (onBack) {
+      // If we have a parent back handler, use it
+      onBack();
+    } else {
+      // Otherwise, handle it locally
+      setSelectedPost(null);
+    }
+  };
 
   // If a post is selected, show the post view
   if (selectedPost) {
-    return (
-      <BlogPost post={selectedPost} onBack={() => setSelectedPost(null)} />
-    );
+    return <BlogPost post={selectedPost} onBack={handleBack} />;
   }
 
   // Otherwise, show the blog listing
   return (
-    <div className="max-w-4xl mx-auto px-4 py-12">
-      <h1 className="text-4xl font-bold mb-8">Blog</h1>
+    <div className="max-w-4xl mx-auto">
       <div className="grid gap-8">
         {blogPosts.map((post) => (
           <div
             key={post.id}
             className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-6 cursor-pointer hover:bg-black/30 transition-all"
-            onClick={() => setSelectedPost(post)}
+            onClick={() => handlePostSelect(post)}
           >
             <h2 className="text-2xl font-semibold mb-2 text-[#646cff]">
               {post.title}
@@ -109,7 +140,10 @@ export default function Blog() {
             <p className="text-gray-300">{post.excerpt}</p>
             <button
               className="mt-4 text-sm font-medium text-[#646cff] hover:text-[#535bf2]"
-              onClick={() => setSelectedPost(post)}
+              onClick={(e) => {
+                e.stopPropagation();
+                handlePostSelect(post);
+              }}
             >
               Read more →
             </button>
@@ -189,7 +223,6 @@ function BlogPost({ post, onBack }: BlogPostProps) {
         </div>
       );
     default:
-      // This should never happen since we only have the 7 OJT blog posts
       return (
         <div className="relative">
           {backButton}

@@ -15,11 +15,12 @@ import {
   SiFirebase,
   SiNeovim,
 } from "react-icons/si";
+import { ReactNode } from "react";
 
 // Define tech stack and tools data structure
 type TechItem = {
   name: string;
-  icon: React.ReactNode;
+  icon: ReactNode; // Changed from React.ReactNode to explicit import
 };
 
 const techStack: TechItem[] = [

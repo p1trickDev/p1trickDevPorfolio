@@ -2,19 +2,35 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { Particles } from "@/components/magicui/particles";
 import Navbar from "@/components/Navbar";
-import Blog from "./components/blog/Blog";
+import Blog, { BlogPost } from "./components/blog/Blog"; // Import the BlogPost type
 import Projects from "./components/Projects";
 import NeonCursor from "./components/NeonCursor";
 import About from "./components/About";
 import Experience from "./components/Experience";
-import Contact from "./components/Contact"; // Import the Contact component
+import Contact from "./components/Contact";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
+  const [selectedBlogPost, setSelectedBlogPost] = useState<BlogPost | null>(
+    null
+  ); // Use the proper type
 
   // Function to handle navigation
   const handleNavigation = (pageName: string) => {
     setCurrentPage(pageName);
+  };
+
+  // Function to handle returning from a blog post
+  const handleBackFromBlogPost = () => {
+    setSelectedBlogPost(null);
+
+    // Add a small delay to ensure the DOM is updated before scrolling
+    setTimeout(() => {
+      const blogSection = document.getElementById("blog");
+      if (blogSection) {
+        blogSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }, 100);
   };
 
   // Set up intersection observer to update active section based on scrolling
@@ -35,6 +51,7 @@ function App() {
             projects: "Projects",
             about: "About",
             experience: "Experience",
+            blog: "Blog",
             contact: "Contact",
           };
 
@@ -51,10 +68,12 @@ function App() {
     );
 
     // Observe all sections
-    ["home", "projects", "about", "experience", "contact"].forEach((id) => {
-      const element = document.getElementById(id);
-      if (element) observer.observe(element);
-    });
+    ["home", "projects", "about", "experience", "blog", "contact"].forEach(
+      (id) => {
+        const element = document.getElementById(id);
+        if (element) observer.observe(element);
+      }
+    );
 
     return () => observer.disconnect();
   }, []);
@@ -75,15 +94,20 @@ function App() {
           />
         </div>
 
-        {/* Navbar at the top - fixed position */}
-        <div className="fixed top-0 left-0 right-0 pt-4 z-20">
-          <Navbar activeItem={currentPage} setActiveItem={handleNavigation} />
-        </div>
+        {/* Navbar at the top - only show when not viewing a blog post */}
+        {!selectedBlogPost && (
+          <div className="fixed top-0 left-0 right-0 pt-4 z-20">
+            <Navbar activeItem={currentPage} setActiveItem={handleNavigation} />
+          </div>
+        )}
 
-        {/* Show Blog page or main content */}
-        {currentPage === "Blog" ? (
-          <div className="pt-20">
-            <Blog />
+        {/* Show BlogPost view or main content */}
+        {selectedBlogPost ? (
+          <div className="pt-10">
+            <Blog
+              initialSelectedPost={selectedBlogPost}
+              onBack={handleBackFromBlogPost}
+            />
           </div>
         ) : (
           <div className="flex flex-col">
@@ -116,6 +140,16 @@ function App() {
             {/* Experience section */}
             <section id="experience">
               <Experience />
+            </section>
+
+            {/* Blog section */}
+            <section id="blog" className="py-24 px-4 relative z-10">
+              <div className="max-w-6xl mx-auto">
+                <h2 className="text-4xl font-bold mb-12 text-center">
+                  <span className="text-[#646cff]">My</span> Blog
+                </h2>
+                <Blog onPostSelect={setSelectedBlogPost} />
+              </div>
             </section>
 
             {/* Contact section */}

@@ -5,7 +5,7 @@ import {
   RiUser3Line,
   RiFileTextLine,
   RiMailLine,
-  RiBriefcaseLine, // Add this import for the experience icon
+  RiBriefcaseLine,
 } from "react-icons/ri";
 import type { IconType } from "react-icons";
 
@@ -30,8 +30,8 @@ const navItems: NavItem[] = [
     href: "experience",
     icon: RiBriefcaseLine,
     isScrollTarget: true,
-  }, // Add this new item
-  { name: "Blog", href: "/blog", icon: RiFileTextLine, isScrollTarget: false },
+  },
+  { name: "Blog", href: "blog", icon: RiFileTextLine, isScrollTarget: true },
   { name: "Contact", href: "contact", icon: RiMailLine, isScrollTarget: true },
 ];
 
@@ -49,9 +49,14 @@ const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
       // For scroll targets, scroll to the section
       const element = document.getElementById(item.href);
       if (element) {
-        element.scrollIntoView({
+        // Improved scrolling with offset to account for fixed navbar
+        const offset = 80; // Adjust this value based on your navbar height
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
           behavior: "smooth",
-          block: "start",
         });
       }
     }
@@ -62,7 +67,7 @@ const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
 
   return (
     <div className="relative z-20 w-full flex justify-center pb-3 pt-2">
-      <div className="bg-black/60 backdrop-blur-lg rounded-full px-4 py-2 flex items-center gap-0.5 sm:gap-2 border border-white/10">
+      <div className="bg-black/60 backdrop-blur-lg rounded-full px-4 py-3 flex items-center gap-2 sm:gap-4 border border-white/10">
         {navItems.map((item) => (
           <NavbarItem
             key={item.name}
@@ -89,12 +94,12 @@ const NavbarItem = ({ item, isActive, onClick }: NavbarItemProps) => {
     <a
       href={item.isScrollTarget ? `#${item.href}` : item.href}
       onClick={onClick}
-      className="group relative flex flex-col items-center px-1"
+      className="group flex flex-col items-center px-1"
     >
       {/* Icon with bounce effect on hover */}
       <div
         className={cn(
-          "flex items-center justify-center h-7 w-7 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:-translate-y-1",
+          "flex items-center justify-center h-7 w-7 rounded-full transition-all duration-300 group-hover:scale-110",
           isActive
             ? "bg-white text-black"
             : "bg-black/30 text-white hover:bg-white/10"
@@ -103,19 +108,14 @@ const NavbarItem = ({ item, isActive, onClick }: NavbarItemProps) => {
         <Icon size={16} />
       </div>
 
-      {/* Label with fade-in effect */}
-      <div
-        className={cn(
-          "absolute -bottom-5 opacity-0 whitespace-nowrap text-[10px] font-medium transition-all duration-300 text-white/90",
-          "group-hover:opacity-100"
-        )}
-      >
+      {/* Label always visible below the icon */}
+      <div className="text-[10px] font-medium mt-1 text-white/90">
         {item.name}
       </div>
 
       {/* Dot indicator for active item */}
       {isActive && (
-        <div className="absolute -bottom-1.5 h-0.5 w-0.5 rounded-full bg-white"></div>
+        <div className="h-0.5 w-0.5 rounded-full bg-white mt-0.5"></div>
       )}
     </a>
   );

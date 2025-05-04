@@ -42,9 +42,7 @@ export default function Contact() {
       setSubmitStatus("success");
       setFormState({ name: "", email: "", message: "" });
     } catch {
-      // Omit the parameter entirely if we don't need it
       setSubmitStatus("error");
-      // Alternative approach could be: console.error("Error sending form");
     } finally {
       setIsSubmitting(false);
     }
@@ -62,14 +60,17 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 px-4 relative z-10 overflow-hidden">
+    <section
+      id="contact"
+      className="py-16 sm:py-20 md:py-24 px-4 relative z-10 overflow-hidden"
+    >
       {/* Background gradient elements */}
-      <div className="absolute -top-24 -left-24 w-64 h-64 bg-[#646cff]/30 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
-      <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-purple-600/20 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
+      <div className="absolute -top-24 -left-24 w-48 sm:w-64 h-48 sm:h-64 bg-[#646cff]/30 rounded-full filter blur-3xl opacity-50 animate-pulse"></div>
+      <div className="absolute -bottom-32 -right-32 w-64 sm:w-80 h-64 sm:h-80 bg-purple-600/20 rounded-full filter blur-3xl opacity-40 animate-pulse"></div>
 
       <div className="max-w-6xl mx-auto relative">
         <motion.h2
-          className="text-4xl font-bold mb-12 text-center"
+          className="text-3xl sm:text-4xl font-bold mb-8 sm:mb-12 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -78,7 +79,7 @@ export default function Contact() {
           <span className="text-[#646cff]">Contact</span> Me
         </motion.h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-8">
           {/* Left column - Contact information */}
           <motion.div
             className="lg:col-span-2"
@@ -87,40 +88,50 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="rounded-2xl bg-black/20 backdrop-blur-sm border border-white/10 p-8 h-full relative overflow-hidden group">
+            <div className="rounded-xl sm:rounded-2xl bg-black/20 backdrop-blur-sm border border-white/10 p-5 sm:p-8 h-full relative overflow-hidden group">
               {/* Animated corner accent */}
               <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#646cff]/30 rounded-full transform group-hover:scale-150 transition-transform duration-700"></div>
 
-              <h3 className="text-2xl font-semibold mb-6">Let's Connect</h3>
-              <p className="text-gray-300 mb-8">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6">
+                Let's Connect
+              </h3>
+              <p className="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8">
                 I'm always open to discussing new projects, opportunities, or
                 just talking about technology.
               </p>
 
               {/* Contact info items */}
-              <div className="space-y-6 relative z-10">
+              <div className="space-y-4 sm:space-y-6 relative z-10">
                 <div
-                  className="flex items-center p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm group/item hover:bg-[#646cff]/10 transition-all duration-300"
+                  className="flex items-center p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm group/item hover:bg-[#646cff]/10 transition-all duration-300"
                   onClick={copyEmail}
                 >
-                  <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
-                    <FiMail size={20} />
+                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
+                    <FiMail size={18} className="sm:text-[20px]" />
                   </div>
-                  <div className="ml-4 flex-grow">
-                    <h4 className="text-sm font-medium text-gray-300">Email</h4>
-                    <p className="text-white group-hover/item:text-[#646cff] transition-colors">
+                  <div className="ml-3 sm:ml-4 flex-grow min-w-0">
+                    <h4 className="text-xs sm:text-sm font-medium text-gray-300">
+                      Email
+                    </h4>
+                    <p className="text-sm sm:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
                       ztifuuu@gmail.com
                     </p>
                   </div>
                   <button
-                    className="ml-2 p-2 rounded-lg hover:bg-white/10 transition-colors"
+                    className="ml-1 sm:ml-2 p-1.5 sm:p-2 rounded-lg hover:bg-white/10 transition-colors"
                     onClick={copyEmail}
                     aria-label="Copy email"
                   >
                     {copiedEmail ? (
-                      <FiCheck size={16} className="text-green-400" />
+                      <FiCheck
+                        size={14}
+                        className="sm:text-[16px] text-green-400"
+                      />
                     ) : (
-                      <FiCopy size={16} className="text-gray-400" />
+                      <FiCopy
+                        size={14}
+                        className="sm:text-[16px] text-gray-400"
+                      />
                     )}
                   </button>
                 </div>
@@ -129,17 +140,17 @@ export default function Contact() {
                   href="https://github.com/p1trickDev"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
+                  className="flex items-center p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
                 >
-                  <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
-                    <FiGithub size={20} />
+                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
+                    <FiGithub size={18} className="sm:text-[20px]" />
                   </div>
-                  <div className="ml-4">
-                    <h4 className="text-sm font-medium text-gray-300">
+                  <div className="ml-3 sm:ml-4 min-w-0">
+                    <h4 className="text-xs sm:text-sm font-medium text-gray-300">
                       GitHub
                     </h4>
-                    <p className="text-white group-hover/item:text-[#646cff] transition-colors">
-                      https://github.com/p1trickDev
+                    <p className="text-sm sm:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
+                      github.com/p1trickDev
                     </p>
                   </div>
                 </a>
@@ -148,17 +159,17 @@ export default function Contact() {
                   href="https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
+                  className="flex items-center p-3 sm:p-4 rounded-lg sm:rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm hover:bg-[#646cff]/10 transition-all duration-300 group/item"
                 >
-                  <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
-                    <FiLinkedin size={20} />
+                  <div className="flex-shrink-0 flex items-center justify-center h-10 w-10 sm:h-12 sm:w-12 rounded-lg sm:rounded-xl bg-[#646cff]/20 text-[#646cff] group-hover/item:bg-[#646cff]/30 transition-colors">
+                    <FiLinkedin size={18} className="sm:text-[20px]" />
                   </div>
-                  <div className="ml-4">
-                    <h4 className="text-sm font-medium text-gray-300">
+                  <div className="ml-3 sm:ml-4 min-w-0">
+                    <h4 className="text-xs sm:text-sm font-medium text-gray-300">
                       LinkedIn
                     </h4>
-                    <p className="text-white group-hover/item:text-[#646cff] transition-colors">
-                      https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/
+                    <p className="text-sm sm:text-base text-white group-hover/item:text-[#646cff] transition-colors truncate">
+                      linkedin.com/in/fitzpatrick-managuit
                     </p>
                   </div>
                 </a>
@@ -174,21 +185,24 @@ export default function Contact() {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            <div className="rounded-2xl bg-black/20 backdrop-blur-sm border border-white/10 p-8 relative overflow-hidden">
+            <div className="rounded-xl sm:rounded-2xl bg-black/20 backdrop-blur-sm border border-white/10 p-5 sm:p-8 relative overflow-hidden">
               {/* Form background accent */}
               <div className="absolute -bottom-16 -left-16 w-32 h-32 bg-purple-600/20 rounded-full filter blur-xl opacity-70"></div>
               <div className="absolute top-0 right-0 w-40 h-40 bg-[#646cff]/10 rounded-full filter blur-xl opacity-70"></div>
 
-              <h3 className="text-2xl font-semibold mb-6 relative z-10">
+              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 relative z-10">
                 Send a Message
               </h3>
 
-              <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div className="space-y-2">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-4 sm:space-y-5 relative z-10"
+              >
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                  <div className="space-y-1.5 sm:space-y-2">
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-gray-300"
+                      className="block text-xs sm:text-sm font-medium text-gray-300"
                     >
                       Your Name
                     </label>
@@ -200,17 +214,17 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className={cn(
-                        "w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10",
+                        "w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-black/30 border border-white/10",
                         "focus:border-[#646cff] focus:ring-1 focus:ring-[#646cff]",
-                        "text-gray-200 focus:outline-none transition-all"
+                        "text-sm sm:text-base text-gray-200 focus:outline-none transition-all"
                       )}
                       placeholder="Juan Dela Cruz"
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-1.5 sm:space-y-2">
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-gray-300"
+                      className="block text-xs sm:text-sm font-medium text-gray-300"
                     >
                       Your Email
                     </label>
@@ -222,19 +236,19 @@ export default function Contact() {
                       onChange={handleChange}
                       required
                       className={cn(
-                        "w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10",
+                        "w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-black/30 border border-white/10",
                         "focus:border-[#646cff] focus:ring-1 focus:ring-[#646cff]",
-                        "text-gray-200 focus:outline-none transition-all"
+                        "text-sm sm:text-base text-gray-200 focus:outline-none transition-all"
                       )}
                       placeholder="JuanDelaCruz@gmail.com"
                     />
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-1.5 sm:space-y-2">
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-gray-300"
+                    className="block text-xs sm:text-sm font-medium text-gray-300"
                   >
                     Message
                   </label>
@@ -244,11 +258,11 @@ export default function Contact() {
                     value={formState.message}
                     onChange={handleChange}
                     required
-                    rows={6}
+                    rows={5}
                     className={cn(
-                      "w-full px-4 py-3 rounded-xl bg-black/30 border border-white/10",
+                      "w-full px-3 sm:px-4 py-2.5 sm:py-3 rounded-lg sm:rounded-xl bg-black/30 border border-white/10",
                       "focus:border-[#646cff] focus:ring-1 focus:ring-[#646cff]",
-                      "text-gray-200 focus:outline-none transition-all"
+                      "text-sm sm:text-base text-gray-200 focus:outline-none transition-all"
                     )}
                     placeholder="Your message here..."
                   />
@@ -259,8 +273,8 @@ export default function Contact() {
                     type="submit"
                     disabled={isSubmitting}
                     className={cn(
-                      "flex items-center gap-2 px-6 py-3 rounded-xl font-medium transition-all",
-                      "bg-gradient-to-r from-[#646cff] to-purple-600 hover:scale-105 text-white shadow-lg shadow-[#646cff]/20",
+                      "flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg sm:rounded-xl font-medium transition-all",
+                      "text-sm sm:text-base bg-gradient-to-r from-[#646cff] to-purple-600 hover:scale-105 text-white shadow-lg shadow-[#646cff]/20",
                       "disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:scale-100",
                       "relative overflow-hidden group"
                     )}
@@ -271,7 +285,7 @@ export default function Contact() {
                     {isSubmitting ? (
                       <>
                         <svg
-                          className="animate-spin -ml-1 mr-2 h-5 w-5 text-white"
+                          className="animate-spin -ml-1 mr-1.5 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5 text-white"
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
@@ -294,7 +308,7 @@ export default function Contact() {
                       </>
                     ) : (
                       <>
-                        <FiSend className="mr-1" />
+                        <FiSend className="text-[14px] sm:text-[16px]" />
                         <span>Send Message</span>
                       </>
                     )}
@@ -308,7 +322,7 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
                     className={cn(
-                      "p-4 rounded-xl mt-4 text-sm flex items-center",
+                      "p-3 sm:p-4 rounded-lg sm:rounded-xl mt-3 sm:mt-4 text-xs sm:text-sm flex items-center",
                       submitStatus === "success"
                         ? "bg-green-500/20 text-green-400 border border-green-500/30"
                         : "bg-red-500/20 text-red-400 border border-red-500/30"
@@ -326,22 +340,24 @@ export default function Contact() {
 
         {/* Social links - Bottom section */}
         <motion.div
-          className="mt-10 flex justify-center"
+          className="mt-8 sm:mt-10 flex justify-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          <div className="flex gap-4 items-center px-6 py-3 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
-            <span className="text-sm text-gray-400">Follow me on:</span>
-            <div className="h-6 w-px bg-white/10"></div>
+          <div className="flex gap-3 sm:gap-4 items-center px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-black/30 backdrop-blur-sm border border-white/10">
+            <span className="text-xs sm:text-sm text-gray-400">
+              Follow me on:
+            </span>
+            <div className="h-4 sm:h-6 w-px bg-white/10"></div>
             <SocialIconLink
-              icon={<FiGithub size={18} />}
+              icon={<FiGithub size={16} className="sm:text-[18px]" />}
               href="https://github.com/p1trickDev"
               label="GitHub"
             />
             <SocialIconLink
-              icon={<FiLinkedin size={18} />}
+              icon={<FiLinkedin size={16} className="sm:text-[18px]" />}
               href="https://www.linkedin.com/in/fitzpatrick-managuit-b94b7b363/"
               label="LinkedIn"
             />
@@ -365,7 +381,7 @@ function SocialIconLink({ icon, href, label }: SocialIconLinkProps) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="p-2 hover:text-[#646cff] transition-colors"
+      className="p-1.5 sm:p-2 hover:text-[#646cff] transition-colors"
       aria-label={label}
     >
       {icon}
