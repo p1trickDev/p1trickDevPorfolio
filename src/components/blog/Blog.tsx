@@ -1,9 +1,16 @@
-import { useState, lazy, Suspense } from "react";
+import { useState } from "react";
 // import { cn } from "@/lib/utils";
 // import { ReactNode } from "react";
 
 // Import ScrollLinked component using lazy loading
-const ScrollLinked = lazy(() => import("./ScrollLinked"));
+// const ScrollLinked = lazy(() => import("./ScrollLinked"));
+import DayOne from "./DayOne";
+import DayTwo from "./DayTwo";
+import DayThree from "./DayThree";
+import DayFour from "./DayFour";
+import DayFive from "./DayFive";
+import DaySix from "./DaySix";
+import DaySeven from "./DaySeven";
 
 // Define blog post type
 type BlogPost = {
@@ -14,31 +21,63 @@ type BlogPost = {
   slug: string;
 };
 
-// Sample blog posts
+// Blog posts - only keeping the OJT diary entries
 const blogPosts: BlogPost[] = [
   {
-    id: "1",
-    title: "Getting Started with React 19",
+    id: "7",
+    title: "Day Seven of OJT: Small Wins, Big Lessons",
     excerpt:
-      "Learn about the new features in React 19 and how to use them effectively in your projects.",
-    date: "2023-10-15",
-    slug: "getting-started-with-react-19",
+      "Our day of overcoming challenges with the notification system and learning the value of persistence in software development.",
+    date: "June 18, 2023",
+    slug: "day-seven-ojt",
   },
   {
-    id: "2",
-    title: "Building Responsive UIs with Tailwind CSS",
+    id: "6",
+    title: "Day Six of OJT: Turning Feedback Into Features",
     excerpt:
-      "Discover how to create beautiful, responsive user interfaces using Tailwind CSS.",
-    date: "2023-09-22",
-    slug: "building-responsive-uis-with-tailwind",
+      "How we implemented document history logs and notification features based on real user feedback to create a more meaningful system.",
+    date: "June 17, 2023",
+    slug: "day-six-ojt",
+  },
+  {
+    id: "5",
+    title: "Day Five of OJT: Progress Report and Real-World Insights",
+    excerpt:
+      "Our experience submitting our first progress report and gathering valuable user insights to improve our document tracking system.",
+    date: "June 16, 2023",
+    slug: "day-five-ojt",
+  },
+  {
+    id: "4",
+    title: "Day Four of OJT: Implementing Document Tracking and User Roles",
+    excerpt:
+      "Our progress developing the core features of the document tracking system and implementing user role management.",
+    date: "June 15, 2023",
+    slug: "day-four-ojt",
   },
   {
     id: "3",
-    title: "Animation Techniques for Modern Web Applications",
+    title: "Day Three of OJT: Planning Features and Starting Development",
     excerpt:
-      "Explore various animation techniques to enhance user experience in your web applications.",
-    date: "2023-08-10",
-    slug: "animation-techniques-for-modern-web",
+      "Our journey from project planning to actual development as we start building the document tracking system.",
+    date: "June 14, 2023",
+    slug: "day-three-ojt",
+  },
+  {
+    id: "2",
+    title: "Day Two of OJT: Laying the Groundwork and Overcoming Git Hurdles",
+    excerpt:
+      "Our team's journey through Git challenges and setting up the Django development environment.",
+    date: "June 13, 2023",
+    slug: "day-two-ojt",
+  },
+  {
+    id: "1",
+    title: "Day One: On the Job Training (OJT)",
+    excerpt:
+      "My experience during the first day of on-the-job training as a graduating IT student.",
+    date: "June 12, 2023",
+    slug: "day-one-ojt",
   },
 ];
 
@@ -81,97 +120,81 @@ export default function Blog() {
   );
 }
 
-// BlogPost component - uses ScrollLinked for article view
+// BlogPost component - specialized for each day's post
 interface BlogPostProps {
   post: BlogPost;
   onBack: () => void;
 }
 
 function BlogPost({ post, onBack }: BlogPostProps) {
-  return (
-    <div className="relative">
-      <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
-        <ScrollLinked>
-          <div className="max-w-3xl mx-auto px-4 pt-16 pb-24">
-            <button
-              onClick={onBack}
-              className="flex items-center mb-8 text-sm font-medium text-[#646cff] hover:text-[#535bf2]"
-            >
-              ← Back to blog
-            </button>
-
-            <h1 className="text-4xl font-bold mb-3">{post.title}</h1>
-            <div className="text-sm text-gray-400 mb-8">{post.date}</div>
-
-            {/* Blog content - you would fetch this from your CMS or data source */}
-            <div className="prose prose-invert max-w-none">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                ac rhoncus quam. Fringilla quam urna. Cras turpis elit, euismod
-                eget ligula quis, imperdiet sagittis justo.
-              </p>
-              <p>
-                In viverra fermentum ex ac vestibulum. Aliquam eleifend nunc a
-                luctus porta. Mauris laoreet augue ut felis blandit, at iaculis
-                odio ultrices. Nulla facilisi. Vestibulum cursus ipsum tellus,
-                eu tincidunt neque tincidunt a.
-              </p>
-              <h2>Getting Started</h2>
-              <p>
-                In eget sodales arcu, consectetur efficitur metus. Duis
-                efficitur tincidunt odio, sit amet laoreet massa fringilla eu.
-                Pellentesque id lacus pulvinar elit pulvinar pretium ac non
-                urna. Mauris id mauris vel arcu commodo venenatis.
-              </p>
-              <p>
-                Aliquam eu risus arcu. Proin sit amet lacus mollis, semper massa
-                ut, rutrum mi. Sed sem nisi, luctus consequat ligula in, congue
-                sodales nisl.
-              </p>
-              <h2>Advanced Techniques</h2>
-              <p>
-                Vestibulum bibendum at erat sit amet pulvinar. Pellentesque
-                pharetra leo vitae tristique rutrum. Donec ut volutpat ante, ut
-                suscipit leo.
-              </p>
-              <p>
-                Maecenas quis elementum nulla, in lacinia nisl. Ut rutrum
-                fringilla aliquet. Pellentesque auctor vehicula malesuada.
-                Aliquam id feugiat sem, sit amet tempor nulla.
-              </p>
-              <p>
-                Quisque fermentum felis faucibus, vehicula metus ac, interdum
-                nibh. Curabitur vitae convallis ligula. Integer ac enim vel
-                felis pharetra laoreet.
-              </p>
-              <h2>Conclusion</h2>
-              <p>
-                Interdum et malesuada fames ac ante ipsum primis in faucibus.
-                Pellentesque hendrerit ac augue quis pretium. Morbi ut
-                scelerisque nibh.
-              </p>
-              <p>
-                Integer auctor, massa non dictum tristique, elit metus efficitur
-                elit, ac pretium sapien nisl nec ante. In et ex ultricies,
-                mollis mi in, euismod dolor.
-              </p>
-              <p>Quisque convallis ligula non magna efficitur tincidunt.</p>
-              {/* Add more paragraphs to enable scrolling */}
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                ac rhoncus quam. Fringilla quam urna. Cras turpis elit, euismod
-                eget ligula quis, imperdiet sagittis justo.
-              </p>
-              <p>
-                In viverra fermentum ex ac vestibulum. Aliquam eleifend nunc a
-                luctus porta. Mauris laoreet augue ut felis blandit, at iaculis
-                odio ultrices. Nulla facilisi. Vestibulum cursus ipsum tellus,
-                eu tincidunt neque tincidunt a.
-              </p>
-            </div>
-          </div>
-        </ScrollLinked>
-      </Suspense>
-    </div>
+  // Render the appropriate component based on the slug
+  const backButton = (
+    <button
+      onClick={onBack}
+      className="fixed top-16 left-4 z-20 flex items-center px-3 py-2 text-sm font-medium text-[#646cff] hover:text-[#535bf2] bg-black/50 rounded-lg backdrop-blur-sm"
+    >
+      ← Back to blog
+    </button>
   );
+
+  // Use a switch statement for better readability
+  switch (post.slug) {
+    case "day-one-ojt":
+      return (
+        <div className="relative">
+          {backButton}
+          <DayOne />
+        </div>
+      );
+    case "day-two-ojt":
+      return (
+        <div className="relative">
+          {backButton}
+          <DayTwo />
+        </div>
+      );
+    case "day-three-ojt":
+      return (
+        <div className="relative">
+          {backButton}
+          <DayThree />
+        </div>
+      );
+    case "day-four-ojt":
+      return (
+        <div className="relative">
+          {backButton}
+          <DayFour />
+        </div>
+      );
+    case "day-five-ojt":
+      return (
+        <div className="relative">
+          {backButton}
+          <DayFive />
+        </div>
+      );
+    case "day-six-ojt":
+      return (
+        <div className="relative">
+          {backButton}
+          <DaySix />
+        </div>
+      );
+    case "day-seven-ojt":
+      return (
+        <div className="relative">
+          {backButton}
+          <DaySeven />
+        </div>
+      );
+    default:
+      // This should never happen since we only have the 7 OJT blog posts
+      return (
+        <div className="relative">
+          {backButton}
+          <div className="text-center py-10">Post not found</div>
+        </div>
+      );
+  }
 }

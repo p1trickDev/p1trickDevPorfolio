@@ -36,16 +36,18 @@ export default function Contact() {
     setIsSubmitting(true);
 
     // Simulate form submission
-    // try {
-    //   // In a real app, you would send the form data to your backend
-    //   await new Promise((resolve) => setTimeout(resolve, 1500));
-    //   setSubmitStatus("success");
-    //   setFormState({ name: "", email: "", message: "" });
-    // } catch (error) {
-    //   setSubmitStatus("error");
-    // } finally {
-    //   setIsSubmitting(false);
-    // }
+    try {
+      // In a real app, you would send the form data to your backend
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      setSubmitStatus("success");
+      setFormState({ name: "", email: "", message: "" });
+    } catch {
+      // Omit the parameter entirely if we don't need it
+      setSubmitStatus("error");
+      // Alternative approach could be: console.error("Error sending form");
+    } finally {
+      setIsSubmitting(false);
+    }
 
     // Reset status after 3 seconds
     setTimeout(() => {
@@ -202,7 +204,7 @@ export default function Contact() {
                         "focus:border-[#646cff] focus:ring-1 focus:ring-[#646cff]",
                         "text-gray-200 focus:outline-none transition-all"
                       )}
-                      placeholder="John Doe"
+                      placeholder="Juan Dela Cruz"
                     />
                   </div>
                   <div className="space-y-2">
@@ -224,7 +226,7 @@ export default function Contact() {
                         "focus:border-[#646cff] focus:ring-1 focus:ring-[#646cff]",
                         "text-gray-200 focus:outline-none transition-all"
                       )}
-                      placeholder="john@example.com"
+                      placeholder="JuanDelaCruz@gmail.com"
                     />
                   </div>
                 </div>

@@ -135,3 +135,26 @@
   animation: glow 3s linear infinite;
   background-size: 200% 200%;
 }
+
+/* Add this to your src/index.css or create a new CSS file */
+.blog-content p {
+  text-align: justify;
+  text-indent: 2em;
+  margin-bottom: 1.5em;
+  line-height: 1.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .blog-content p {
+    text-indent: 1.5em;
+    line-height: 1.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-content p {
+    text-align: left; /* Switch to left alignment on very small screens for better readability */
+    font-size: 0.95rem;
+  }
+}

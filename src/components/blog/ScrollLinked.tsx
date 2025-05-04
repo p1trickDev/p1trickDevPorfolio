@@ -1,6 +1,5 @@
 import { motion, useScroll } from "framer-motion";
 import { ReactNode } from "react";
-import { Content } from "./Content";
 
 interface ScrollLinkedProps {
   children?: ReactNode;
@@ -24,7 +23,7 @@ export default function ScrollLinked({ children }: ScrollLinkedProps) {
           backgroundColor: "#ff0088",
         }}
       />
-      {children || <Content />}
+      {children}
     </>
   );
 }
