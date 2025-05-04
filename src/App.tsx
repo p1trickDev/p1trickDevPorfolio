@@ -5,6 +5,8 @@ import Navbar from "@/components/Navbar";
 import Blog from "./components/blog/Blog";
 import Projects from "./components/Projects";
 import NeonCursor from "./components/NeonCursor";
+import About from "./components/About"; // Import your new About component
+import Contact from "./components/Contact"; // Add this import at the top
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -104,32 +106,14 @@ function App() {
               <Projects />
             </section>
 
-            {/* About section - placeholder for future component */}
-            <section id="about" className="py-24 px-4">
-              <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl font-bold mb-8">
-                  <span className="text-[#646cff]">About</span> Me
-                </h2>
-                <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-8">
-                  <p className="opacity-70 italic">
-                    About section component will be implemented soon.
-                  </p>
-                </div>
-              </div>
+            {/* About section - now using the new component */}
+            <section id="about">
+              <About />
             </section>
 
-            {/* Contact section - placeholder for future component */}
-            <section id="contact" className="py-24 px-4">
-              <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-4xl font-bold mb-8">
-                  <span className="text-[#646cff]">Contact</span> Me
-                </h2>
-                <div className="bg-black/20 backdrop-blur-sm border border-white/10 rounded-lg p-8">
-                  <p className="opacity-70 italic">
-                    Contact section component will be implemented soon.
-                  </p>
-                </div>
-              </div>
+            {/* Contact section */}
+            <section id="contact">
+              <Contact />
             </section>
           </div>
         )}
