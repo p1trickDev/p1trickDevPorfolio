@@ -55,7 +55,7 @@ const Navbar = ({ activeItem, setActiveItem }: NavbarProps) => {
 
   return (
     <div className="relative z-20 w-full flex justify-center pb-3 pt-2">
-      <div className="bg-black/20 backdrop-blur-lg rounded-full px-4 py-2 flex items-center gap-0.5 sm:gap-2 border border-white/10">
+      <div className="bg-black/60 backdrop-blur-lg rounded-full px-4 py-2 flex items-center gap-0.5 sm:gap-2 border border-white/10">
         {navItems.map((item) => (
           <NavbarItem
             key={item.name}
@@ -88,7 +88,9 @@ const NavbarItem = ({ item, isActive, onClick }: NavbarItemProps) => {
       <div
         className={cn(
           "flex items-center justify-center h-7 w-7 rounded-full transition-all duration-300 group-hover:scale-125 group-hover:-translate-y-1",
-          isActive ? "bg-[#646cff]/70" : "bg-black/30 hover:bg-white/10"
+          isActive
+            ? "bg-white text-black"
+            : "bg-black/30 text-white hover:bg-white/10"
         )}
       >
         <Icon size={16} />
@@ -97,7 +99,7 @@ const NavbarItem = ({ item, isActive, onClick }: NavbarItemProps) => {
       {/* Label with fade-in effect */}
       <div
         className={cn(
-          "absolute -bottom-5 opacity-0 whitespace-nowrap text-[10px] font-medium transition-all duration-300",
+          "absolute -bottom-5 opacity-0 whitespace-nowrap text-[10px] font-medium transition-all duration-300 text-white/90",
           "group-hover:opacity-100"
         )}
       >
