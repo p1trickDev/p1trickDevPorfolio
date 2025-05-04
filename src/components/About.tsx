@@ -5,14 +5,15 @@ import {
   SiTypescript,
   SiTailwindcss,
   SiNodedotjs,
-  SiMongodb,
+  //   SiMongodb, // Keep import for reference
   SiExpress,
   SiGit,
   //   SiVisualstudio,
   SiFigma,
   SiGithub,
-  SiJirasoftware,
   SiPostman,
+  SiFirebase,
+  SiNeovim,
 } from "react-icons/si";
 
 // Define tech stack and tools data structure
@@ -26,7 +27,7 @@ const techStack: TechItem[] = [
   { name: "TypeScript", icon: <SiTypescript size={24} /> },
   { name: "Tailwind CSS", icon: <SiTailwindcss size={24} /> },
   { name: "Node.js", icon: <SiNodedotjs size={24} /> },
-  { name: "MongoDB", icon: <SiMongodb size={24} /> },
+  { name: "Firebase", icon: <SiFirebase size={24} /> }, // Replaced MongoDB with Firebase
   { name: "Express", icon: <SiExpress size={24} /> },
 ];
 
@@ -35,7 +36,7 @@ const tools: TechItem[] = [
   { name: "Git", icon: <SiGit size={24} /> },
   { name: "GitHub", icon: <SiGithub size={24} /> },
   { name: "Figma", icon: <SiFigma size={24} /> },
-  { name: "Jira", icon: <SiJirasoftware size={24} /> },
+  { name: "Neovim", icon: <SiNeovim size={24} /> }, // Replaced Jira with Neovim
   { name: "Postman", icon: <SiPostman size={24} /> },
 ];
 

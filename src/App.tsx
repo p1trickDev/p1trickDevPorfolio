@@ -6,7 +6,8 @@ import Blog from "./components/blog/Blog";
 import Projects from "./components/Projects";
 import NeonCursor from "./components/NeonCursor";
 import About from "./components/About";
-import Contact from "./components/Contact";
+import Experience from "./components/Experience";
+import Contact from "./components/Contact"; // Import the Contact component
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Home");
@@ -33,6 +34,7 @@ function App() {
             home: "Home",
             projects: "Projects",
             about: "About",
+            experience: "Experience",
             contact: "Contact",
           };
 
@@ -49,7 +51,7 @@ function App() {
     );
 
     // Observe all sections
-    ["home", "projects", "about", "contact"].forEach((id) => {
+    ["home", "projects", "about", "experience", "contact"].forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
     });
@@ -63,14 +65,13 @@ function App() {
         {/* Neon Cursor */}
         <NeonCursor />
 
-        {/* Particles background - update to more subtle white particles */}
+        {/* Particles background */}
         <div className="fixed inset-0 z-0">
           <Particles
             className="h-full w-full"
-            quantity={70}
-            color="#ffffff"
-            size={0.7}
-            staticity={70}
+            quantity={100}
+            color="#646cff"
+            size={1}
           />
         </div>
 
@@ -92,15 +93,13 @@ function App() {
               className="min-h-screen flex items-center justify-center pt-16"
             >
               <div className="text-center">
-                <h1 className="text-5xl md:text-6xl font-bold mb-4 text-white">
+                <h1 className="text-5xl md:text-6xl font-bold mb-4">
                   Fitzpatrick U. Managuit
                 </h1>
-                <h2 className="text-2xl md:text-3xl font-light text-white/80 mb-6">
-                  <span className="text-white">p1trick</span>Dev
+                <h2 className="text-2xl md:text-3xl font-light text-primary/80 mb-6">
+                  <span className="text-[#646cff]">p1trick</span>Dev
                 </h2>
-                <p className="text-xl md:text-2xl text-white/70">
-                  Full Stack Developer
-                </p>
+                <p className="text-xl md:text-2xl">Full Stack Developer</p>
               </div>
             </section>
 
@@ -112,6 +111,11 @@ function App() {
             {/* About section */}
             <section id="about">
               <About />
+            </section>
+
+            {/* Experience section */}
+            <section id="experience">
+              <Experience />
             </section>
 
             {/* Contact section */}

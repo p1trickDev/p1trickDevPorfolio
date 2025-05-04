@@ -20,7 +20,7 @@ export default function ScrollLinked({ children }: ScrollLinkedProps) {
           right: 0,
           height: 10,
           originX: 0,
-          backgroundColor: "#ff0088",
+          backgroundColor: "#646CFF",
         }}
       />
       {children}

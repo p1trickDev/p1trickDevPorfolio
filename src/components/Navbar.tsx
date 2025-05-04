@@ -5,6 +5,7 @@ import {
   RiUser3Line,
   RiFileTextLine,
   RiMailLine,
+  RiBriefcaseLine, // Add this import for the experience icon
 } from "react-icons/ri";
 import type { IconType } from "react-icons";
 
@@ -24,6 +25,12 @@ const navItems: NavItem[] = [
     isScrollTarget: true,
   },
   { name: "About", href: "about", icon: RiUser3Line, isScrollTarget: true },
+  {
+    name: "Experience",
+    href: "experience",
+    icon: RiBriefcaseLine,
+    isScrollTarget: true,
+  }, // Add this new item
   { name: "Blog", href: "/blog", icon: RiFileTextLine, isScrollTarget: false },
   { name: "Contact", href: "contact", icon: RiMailLine, isScrollTarget: true },
 ];
