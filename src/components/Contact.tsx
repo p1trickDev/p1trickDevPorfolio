@@ -36,16 +36,16 @@ export default function Contact() {
     setIsSubmitting(true);
 
     // Simulate form submission
-    try {
-      // In a real app, you would send the form data to your backend
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitStatus("success");
-      setFormState({ name: "", email: "", message: "" });
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
-      setIsSubmitting(false);
-    }
+    // try {
+    //   // In a real app, you would send the form data to your backend
+    //   await new Promise((resolve) => setTimeout(resolve, 1500));
+    //   setSubmitStatus("success");
+    //   setFormState({ name: "", email: "", message: "" });
+    // } catch (error) {
+    //   setSubmitStatus("error");
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
 
     // Reset status after 3 seconds
     setTimeout(() => {
